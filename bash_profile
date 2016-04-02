@@ -7,6 +7,7 @@ export PATH="/usr/local/bin:$PATH"
 
 alias ll='ls -la'
 alias sha1sum="openssl sha1"
+alias ldroplet="ssh root@104.236.146.164"
 
 alias sccleanknownhosts="rm ~/.ssh/known_hosts"
 alias scedit_bash_profile="vim ~/.bash_profile"
