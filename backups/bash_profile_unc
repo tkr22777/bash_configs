@@ -1,0 +1,72 @@
+#Title: UNC bash_profile
+#!bin/bash
+export CLICOLOR=1
+alias ll='ls -la'
+alias ssh='ssh'
+
+alias ltitkari="ssh -p 5545 tahsin@199.180.133.2"
+alias lcentos="ssh -t tahsin@192.168.56.101"
+
+alias lgeniimages="ssh tahsin@geni-images.renci.org"
+
+alias sha1sum="openssl sha1"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/Users/tahsinkabir/aspectj1.8/bin:$PATH"
+export PATH="/Users/tahsinkabir/aspectj1.8/lib/aspectjrt.jar:$PATH"
+alias cdcourses="cd /Users/tahsinkabir/Dropbox/Courses"
+#alias cdmodlang=" cd /Users/tahsinkabir/Dropbox/Courses/COMP455_Models_Of_Lang"
+#alias cddiscourse=" cd /Users/tahsinkabir/Dropbox/Courses/COMP790-063-Dist_Coll_Systems"
+alias cdsoftdevlang=" cd /Users/tahsinkabir/Dropbox/Courses/COMP723-Software_Development_And_Implementation"
+alias cdreseach="cd /Users/tahsinkabir/Dropbox/Research"
+alias cdunc="cd /Users/tahsinkabir/Dropbox/UNC"
+alias cdslc="cd /Users/tahsinkabir/Dropbox/SLC"
+alias cdslctransit="cd /Users/tahsinkabir/Dropbox/SLC/Transit"
+alias cdqualtrics="cd /Users/tahsinkabir/Dropbox/Qualtrics"
+alias cddesktop="cd /Users/tahsinkabir/Desktop/"
+alias cddropbox="cd /Users/tahsinkabir/Dropbox/"
+alias cdproposal="cd /Users/tahsinkabir/Dropbox/Shared_with_Centos/COMP992_Proposal/"
+alias cdsharedwithcentos="cd /Users/tahsinkabir/Dropbox/Shared_with_Centos/"
+alias cdreseachcode="cd /Users/tahsinkabir/Dropbox/Research/Codes/radii/Best_Node_Experiment/RADII_Store_policy"
+
+alias cdclusterpaper="cd /Users/tahsinkabir/Dropbox/Shared_with_Centos/RADII_SOURCE/radii/papers/cluster2015"
+
+alias scedit_bash_profile="vim ~/.bash_profile"
+alias scsource_bash_profile="source ~/.bash_profile"
+alias scflukes_run="open /Users/tahsinkabir/Desktop/ExoGENI/Flukes_3_latest/flukes.jnlp"
+alias sccleanknownhosts="rm ~/.ssh/known_hosts"
+alias scradiiGitClone="echo 'git clone ssh://tahsin@code.renci.org/gitroot/radii' | pbcopy"
+alias sctitkariGitClone="echo 'git clone git@github.com:stupefied/titkari.git' | pbcopy"
+
+alias sclinkedin_request_copy="echo 'Hi
+
+I found my skill-set is aligned with the kind of people you are looking to recruit. I would like to add you to my professional network. I am graduating with a Masters in Computer Science this May from UNC-Chapel Hill.
+
+-Tahsin' | pbcopy
+"
+alias scemail_signature_copy="echo 'Tahsin Kabir
+Graduate Research Assistant,
+The Department of Computer Science.
+UNC-Chapel Hill
+Email: tahsin@cs.unc.edu
+Phone: 919-525-3042
+LinkedIn: http://www.linkedin.com/in/tahsinkabir
+' | pbcopy
+"
+
+alias scresume_link_copy="echo 'My resume can be downloaded from the following link: http://cs.unc.edu/~tahsin/Tahsin_Kabir_Resume.pdf' | pbcopy"
+
+#git path fix
+PATH=/usr/local/git/bin:$PATH
+export PATH
+export GREP_OPTIONS='--color=always'
+export GREP_COLORS='fn=1;32'
+
+#Vert.X path fix
+PATH=$PATH:/Users/tahsinkabir/Dropbox/Shared_with_Centos/D2I/VertX/vert.x-2.1.5/bin
+
+#Gradle path fix
+PATH=$PATH:/Users/tahsinkabir/Dropbox/Shared_with_Centos/D2I/Gradle/gradle-2.4/bin
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home
+
+
