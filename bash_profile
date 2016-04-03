@@ -15,3 +15,9 @@ alias scsource_bash_profile="source ~/.bash_profile"
 alias sctitkariGitClone="echo 'git clone git@github.com:stupefied/titkari.git' | pbcopy"
 alias scinitGitClone="echo 'git clone git@github.com:stupefied/init.git' | pbcopy"
 alias scCopyDropletIP="echo '104.236.146.164' | pbcopy"
+
+#Tmux Aliases
+alias tls='tmux ls '
+alias tap='tmux attach -t '
+alias tkill='tmux kill-session -t '
+alias tns='tmux new -s '
