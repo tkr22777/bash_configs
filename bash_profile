@@ -4,9 +4,6 @@ export GREP_OPTIONS='--color=always'
 export GREP_COLORS='fn=1;32'
 export PATH="/usr/local/bin:$PATH"
 
-git config --global user.name "Tahsin Kabir"
-git config --global user.email tahsinkabir@gmail.com
-
 alias ll='ls -la'
 alias sha1sum="openssl sha1"
 alias ldroplet="ssh root@104.236.146.164"
