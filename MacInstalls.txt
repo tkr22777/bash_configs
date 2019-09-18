@@ -1,0 +1,15 @@
+1. Firefox
+2. LastPass - Firefox
+3. Spectacle
+4. Brew
+5. Tree - brew install tree
+6. Docker
+7. IntelliJ Community Edition
+8. PycharmEdu
+9. Tmux: brew install tmux
+10. JDK: brew cask install java
+11. Maven: brew install maven
+12. Scala: brew install scala (for shobdo)
+13. SBT: brew install sbt (for shobdo)
+14. Ranger GUI based file browser: brew install ranger
+15. Ctags: brew install ctags
