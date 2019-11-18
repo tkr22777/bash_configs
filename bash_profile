@@ -105,3 +105,10 @@ alias scKaomojiConfused="echo -n 'o_O' | pbcopy"
 alias scKaomojiZombie="echo -n '[¬º-°]¬' | pbcopy"
 alias scKaomojiCoffe="echo -n 'c[_]' | pbcopy"
 alias scKaomojiYass="echo -n '\(ˆ˚ˆ)/' | pbcopy"
+
+#Functions
+javaCompileRunClean() {
+    javac "$1.java" 
+    java "$1"
+    rm "$1.class"
+}

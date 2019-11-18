@@ -13,3 +13,7 @@
 13. SBT: brew install sbt (for shobdo)
 14. Ranger GUI based file browser: brew install ranger
 15. Ctags: brew install ctags
+16. Wget: brew install wget
+17. Installed python 3: https://medium.com/@briantorresgil/definitive-guide-to-python-on-mac-osx-65acd8d969d0
+
+18. Asciinema: brew install asciinema
