@@ -27,13 +27,18 @@ function clean_re_source_ssh_agent() {
 	ident=$?
 	if [ $ident -ne 0 ]
 	then
-		ssh-add > /dev/null
-		ident=$?
-		if [ $ident -ne 0 ]
+		ssh-add > /dev/null ident=$?  if [ $ident -ne 0 ]
 		then
 			re-source_ssh_agent
 		fi
 	fi
+}
+
+## Java Compile Run Clean for PS
+javaCompileRunClean() {
+    javac "$1.java" 
+    java "$1"
+    rm *.class
 }
 
 #A. EXPORTS
@@ -43,7 +48,6 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 export CLICOLOR=1
 export GREP_OPTIONS='--color=always'
 export GREP_COLORS='fn=1;32'
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
 export PATH="/usr/local/bin:$PATH"
 
 #EXPORT FOR HISTORY:
@@ -106,9 +110,4 @@ alias scKaomojiZombie="echo -n '[¬º-°]¬' | pbcopy"
 alias scKaomojiCoffe="echo -n 'c[_]' | pbcopy"
 alias scKaomojiYass="echo -n '\(ˆ˚ˆ)/' | pbcopy"
 
-#Functions
-javaCompileRunClean() {
-    javac "$1.java" 
-    java "$1"
-    rm *.class
-}
+
