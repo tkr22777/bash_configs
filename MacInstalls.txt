@@ -18,3 +18,7 @@
 17. Wget: brew install wget
 18. Installed python 3: https://medium.com/@briantorresgil/definitive-guide-to-python-on-mac-osx-65acd8d969d0
 19. Asciinema: brew install asciinema
+20. AWS: brew install awscli
+21. Kafkat: brew install kafkacat
+22. SSL: brew install openssl
+22. Watch: brew install watch
