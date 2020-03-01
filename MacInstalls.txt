@@ -22,3 +22,7 @@
 21. Kafkat: brew install kafkacat
 22. SSL: brew install openssl
 22. Watch: brew install watch
+23. Iperf3: brew install iperf3
+24. iftop: brew install iftop
+25. Asdf: brew install asdf
+    
