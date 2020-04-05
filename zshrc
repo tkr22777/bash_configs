@@ -83,6 +83,9 @@ alias scedit_bash_profile="vim ~/.bash_profile"
 alias scedit_known_hosts="vim ~/.ssh/known_hosts"
 alias scsource_bash_profile="source ~/.bash_profile"
 alias scDockerRmAllContainers="docker rm -f \$(docker ps -a -q)"
+alias scDockerRemoveDanglingVolumes="docker volume rm \$(docker volume ls -f dangling=true -q) # Remove dangling volumes"
+alias scDockerRemoveDanglingImages="docker rmi \$(docker images -f "dangling=true" -q)"
+
 
 #TMUX ALIASES:
 alias tls='tmux ls '
