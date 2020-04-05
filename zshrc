@@ -110,4 +110,3 @@ alias scKaomojiZombie="echo -n '[¬º-°]¬' | pbcopy"
 alias scKaomojiCoffe="echo -n 'c[_]' | pbcopy"
 alias scKaomojiYass="echo -n '\(ˆ˚ˆ)/' | pbcopy"
 
-
