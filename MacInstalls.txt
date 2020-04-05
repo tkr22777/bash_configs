@@ -1,28 +1,8 @@
 1. Firefox
 2. LastPass - Firefox
 3. Spectacle
-4. Brew: https://brew.sh
-5. Cask: brew install cask
-5. Tree: brew install tree
-6. Docker: brew cask install docker
-7. Ctop: brew install ctop
-8. IntelliJ Community Edition
-9. PycharmEdu
-10. Tmux: brew install tmux
-11. JDK: brew cask install java
-12. Maven: brew install maven
-13. Scala: brew install scala (for shobdo)
-14. SBT: brew install sbt (for shobdo)
-15. Ranger GUI based file browser: brew install ranger
-16. Ctags: brew install ctags
-17. Wget: brew install wget
-18. Installed python 3: https://medium.com/@briantorresgil/definitive-guide-to-python-on-mac-osx-65acd8d969d0
-19. Asciinema: brew install asciinema
-20. AWS: brew install awscli
-21. Kafkat: brew install kafkacat
-22. SSL: brew install openssl
-22. Watch: brew install watch
-23. Iperf3: brew install iperf3
-24. iftop: brew install iftop
-25. Asdf: brew install asdf
-    
+4. IntelliJ Community Edition
+5. Goland
+6. Python 3: https://medium.com/@briantorresgil/definitive-guide-to-python-on-mac-osx-65acd8d969d0
+7. PycharmEdu
+
