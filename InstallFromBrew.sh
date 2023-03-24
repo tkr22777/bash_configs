@@ -23,5 +23,5 @@ brew install tree           #tree view of files
 brew install watch          #watch the whole world burn
 brew install wget           #the terminal based downloader
 
-brew cask install docker    #docker, the container manager
-brew cask install java      #the jdk
+brew install docker --cask    #docker, the container manager
+brew install java --cask      #the jdk
