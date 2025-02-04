@@ -1,8 +1,0 @@
-1. Firefox
-2. LastPass - Firefox
-3. Spectacle
-4. IntelliJ Community Edition
-5. Goland
-6. Python 3: https://medium.com/@briantorresgil/definitive-guide-to-python-on-mac-osx-65acd8d969d0
-7. PycharmEdu
-

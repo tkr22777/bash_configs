@@ -1,10 +1,12 @@
 #!/bin/bash
 
-#Install brew
+# install aws cli: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo installer -pkg AWSCLIV2.pkg -target /
+
+# install brew: https://docs.brew.sh/Installation
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-brew install awscli         #the aws cli
-brew install asciinema      #bash command flow recorder
 brew install cask           #cask is a non command prompt installer
 brew install ctop           #the container top
 brew install fzf            #command line fuzzy finder
@@ -26,7 +28,7 @@ brew install git            #git, the version control system
 brew install terraform      #infrastructure as code tool
 brew install kubectl        #the kubernetes cli
 brew install poetry         #the python package manager
-
+brew install asciinema      #bash command flow recorder
 
 # brew cask install java      #the jdk
 # brew install asdf           #project specific version manager
