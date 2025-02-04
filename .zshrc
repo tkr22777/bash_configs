@@ -6,8 +6,14 @@ plugins=(
   docker
   docker-compose
 )
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt EXTENDED_HISTORY
 
-#FUNCTIONS:
+#A. FUNCTIONS:
 
 #Takes container name as a parameter and if found, kills the container
 function kill_container {
@@ -43,6 +49,39 @@ function clean_re_source_ssh_agent() {
 	fi
 }
 
+function oai() {
+  local user_prompt="$*"
+  local system_prompt="You are an expert at assisting with bash command. Answer very concisely with an output that is suitable for a bash command."
+
+  # Build the JSON body
+  local json_payload=$(
+    cat <<EOF
+{
+  "model": "gpt-4o-mini",
+  "messages": [
+    {
+      "role": "system",
+      "content": "$system_prompt"
+    },
+    {
+      "role": "user",
+      "content": "$user_prompt"
+    }
+  ],
+  "max_tokens": 100,
+  "temperature": 0.7
+}
+EOF
+  )
+
+  # Send request to OpenAI, pipe to jq, extract only the assistant's "content".
+  curl -s https://api.openai.com/v1/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d "$json_payload" \
+  | jq -r '.choices[0].message.content'
+}
+
 #B. ALIASES
 
 # General Aliases:
@@ -53,6 +92,11 @@ alias sha1sum="openssl sha1"
 alias scclear_known_hosts="cat /dev/null > ~/.ssh/known_hosts"
 alias scedit_known_hosts="vim ~/.ssh/known_hosts"
 alias sccleanknownhosts="rm ~/.ssh/known_hosts"
+alias scedit_zshrc="vim ~/.zshrc"
+alias scsource_zshrc="source ~/.zshrc"
+alias scDockerRmAllContainers="docker rm -f \$(docker ps -a -q)"
+alias scDockerRemoveDanglingImages="docker rmi \$(docker images -f dangling=true -q)"
+alias scDockerRemoveDanglingVolumes="docker volume rm \$(docker volume ls -f dangling=true -q)"
 
 #Tmux Aliases
 alias tls='tmux ls '
@@ -68,6 +112,20 @@ alias gitpushcurrent="git push origin \`git rev-parse --abbrev-ref HEAD\`"
 alias gitdifflast="git diff \`git log | head -n 1 | awk -F ' ' '{print \$2}'\`"
 alias gitdifflastcommitted="git diff \`git log | grep '^commit ' | head -n 2 | awk -F ' ' '{print \$2}' | tail -r | sed 'N;s/\n/ /'\`"
 alias gitdifflaststat="git diff \`git log | head -n 1 | awk -F ' ' '{print \$2}'\` --stat"
+alias gitshowignored="git check-ignore *"
+
+#Kaomojis
+alias scKaomojiShrug="echo -n '¯\_(ツ)_/¯' | pbcopy"
+alias scKaomojiConfused="echo -n 'o_O' | pbcopy"
+alias scKaomojiZombie="echo -n '[¬º-°]¬' | pbcopy"
+alias scKaomojiCoffe="echo -n 'c[_]' | pbcopy"
+alias scKaomojiYass="echo -n '\(ˆ˚ˆ)/' | pbcopy"
+alias scKaomojiSmile="echo -n '(ᵔ◡ᵔ)' | pbcopy"
+alias scKaomojiMusic="echo -n 'ヾ(⌐■_■)ノ♪' | pbcopy"
+alias scKaomojiThinFlex="echo -n 'ᕙ༼◕_◕༽ᕤ' | pbcopy"
+alias scKaomojiDistraught="echo -n '༼ ༎ຶ ෴ ༎ຶ༽' | pbcopy"
+alias scKaomojiFeisty="echo -n '(ง •̀_•́)ง' | pbcopy"
+alias scKaomojiPoggers="echo -n 'ᕕ( ᐛ )ᕗ' | pbcopy"
 
 #C. EXPORTS
 
@@ -83,20 +141,8 @@ export PATH="/usr/local/bin:$PATH"
 export HISTFILE=~/.zsh_history
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILESIZE=10000
-export HISTSIZE=1000
+export HISTSIZE=200000
 
 #EXPORT FOR UTF:
 export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
-export LC_NUMERIC=en_US.UTF-8
-export LC_TIME=en_US.UTF-8
-export LC_COLLATE=en_US.UTF-8
-export LC_MONETARY=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_PAPER=en_US.UTF-8
-export LC_NAME=en_US.UTF-8
-export LC_ADDRESS=en_US.UTF-8
-export LC_TELEPHONE=en_US.UTF-8
-export LC_MEASUREM=en_US.UTF-8
-export LC_IDENTIFICATION=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
