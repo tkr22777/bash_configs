@@ -5,6 +5,9 @@ plugins=(
   brew
   docker
   docker-compose
+  zsh-autosuggestions     # Suggests commands as you type
+  zsh-syntax-highlighting # Syntax highlighting in shell
+  z                      # Jump to frequently used directories
 )
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
@@ -15,7 +18,9 @@ setopt EXTENDED_HISTORY
 
 #A. FUNCTIONS:
 
-#Takes container name as a parameter and if found, kills the container
+# Kills Docker container by name
+# Example: kill_container mysql
+# This will find and force remove any container with 'mysql' in its name
 function kill_container {
 	runningContainers=`docker ps -a | grep $1 | wc -l `
 	if [ $runningContainers -gt 0 ]; then
@@ -23,6 +28,9 @@ function kill_container {
 	fi
 }
 
+# Resets SSH agent configuration and adds default keys
+# Example: re-source_ssh_agent
+# Useful when SSH agent needs to be restarted or is not working properly
 function re-source_ssh_agent(){
     rm -f "$HOME"/.ssh/`hostname`.agent
     ssh-agent -t 28800 > "$HOME"/.ssh/`hostname`.agent > /dev/null
@@ -30,7 +38,9 @@ function re-source_ssh_agent(){
     ssh-add > /dev/null
 }
 
-## SSH agent script
+# Automatically manages SSH agent, checking if it's running and reinitializing if needed
+# Example: clean_re_source_ssh_agent
+# Usually added to .zshrc to ensure SSH agent is always properly configured on shell start
 function clean_re_source_ssh_agent() {
 	if [ -e "$HOME"/.ssh/`hostname`.agent ]
 	then
@@ -49,6 +59,9 @@ function clean_re_source_ssh_agent() {
 	fi
 }
 
+# Uses OpenAI API to get bash command suggestions
+# Example: oai "how to find large files in current directory"
+# Will return a relevant bash command for the query
 function oai() {
   local user_prompt="$*"
   local system_prompt="You are an expert at assisting with bash command. Answer very concisely with an output that is suitable for a bash command."
@@ -80,6 +93,37 @@ EOF
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d "$json_payload" \
   | jq -r '.choices[0].message.content'
+}
+
+# Creates a new directory and changes into it in one command
+# Example: mkcd new-project
+# This will create 'new-project' directory and cd into it
+function mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Universal archive extraction function
+# Example: extract archive.zip
+# Automatically detects archive type and extracts it appropriately
+function extract() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1     ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar e $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xf $1      ;;
+            *.tbz2)      tar xjf $1     ;;
+            *.tgz)       tar xzf $1     ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)          echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
 #B. ALIASES
@@ -127,6 +171,36 @@ alias scKaomojiDistraught="echo -n '༼ ༎ຶ ෴ ༎ຶ༽' | pbcopy"
 alias scKaomojiFeisty="echo -n '(ง •̀_•́)ง' | pbcopy"
 alias scKaomojiPoggers="echo -n 'ᕕ( ᐛ )ᕗ' | pbcopy"
 
+# Directory navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+
+# System commands
+alias df='df -h'
+alias du='du -h'
+alias free='free -m'
+alias path='echo -e ${PATH//:/\\n}'
+
+# Git additional aliases
+alias gst='git status'
+alias gco='git checkout'
+alias gci='git commit'
+alias grb='git rebase'
+alias gbr='git branch'
+alias gad='git add -A'
+alias gpl='git pull'
+alias gpu='git push'
+alias glg='git log --graph --oneline --decorate'
+
+# Docker additional aliases
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias dimg='docker images'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
+
 #C. EXPORTS
 
 #GENERAL EXPORTS:
@@ -142,7 +216,17 @@ export HISTFILE=~/.zsh_history
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTFILESIZE=10000
 export HISTSIZE=200000
+export SAVEHIST=200000
 
 #EXPORT FOR UTF:
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+
+# Color support for less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
