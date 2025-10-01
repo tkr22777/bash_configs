@@ -1,0 +1,10 @@
+# Ignore sensitive environment variables
+.zsh/.env
+
+# Ignore backup files
+*.backup.*
+.zshrc.backup.*
+
+# Ignore OS files
+.DS_Store
+
