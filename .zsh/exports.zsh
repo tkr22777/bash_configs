@@ -10,7 +10,7 @@ export LSCOLORS=Exfxcxdxbxegedabagacad
 export CLICOLOR=1
 export GREP_OPTIONS='--color=always'
 export GREP_COLORS='fn=1;32'
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+# PS1 is handled by ZSH theme (avit) - no need to set it here
 export PATH="/usr/local/bin:$PATH"
 
 # History Configuration

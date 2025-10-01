@@ -10,21 +10,16 @@ mkdir -p ~/.zsh
 echo "✓ Copying .zshrc..."
 cp "$HOME/Dropbox/Work/init/.zshrc" ~/.zshrc
 
-# Copy all modular config files (excluding .env to preserve local settings)
+# Copy all modular config files
 echo "✓ Copying modular config files..."
 for file in "$HOME/Dropbox/Work/init/.zsh/"*.zsh; do
   cp "$file" ~/.zsh/
 done
 
-# Copy .env.template if it doesn't exist in home directory
-if [ ! -f ~/.zsh/.env ]; then
-  if [ -f "$HOME/Dropbox/Work/init/.zsh/.env.template" ]; then
-    echo "✓ Creating .env from template (please configure your API keys)..."
-    cp "$HOME/Dropbox/Work/init/.zsh/.env.template" ~/.zsh/.env
-    echo "⚠️  Remember to edit ~/.zsh/.env and add your API keys!"
-  fi
-else
-  echo "✓ Preserving existing ~/.zsh/.env file"
+# Copy .env file (sync from repo)
+if [ -f "$HOME/Dropbox/Work/init/.zsh/.env" ]; then
+  cp "$HOME/Dropbox/Work/init/.zsh/.env" ~/.zsh/.env
+  echo "✓ Synced .env file (remember to configure your API keys)"
 fi
 
 echo "✓ Done! ZSH configuration synced."

@@ -1,7 +1,8 @@
 # ZSH Configuration - Modular Setup
 # Main config file that sources all modular components from ~/.zsh/
 
-# ZSH Specific Settings
+# Oh-My-Zsh Configuration
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="avit"
 plugins=(
   git
@@ -12,6 +13,9 @@ plugins=(
   zsh-syntax-highlighting # Syntax highlighting in shell
   z                      # Jump to frequently used directories
 )
+
+# Load Oh-My-Zsh
+source $ZSH/oh-my-zsh.sh
 
 # History Options
 setopt APPEND_HISTORY
